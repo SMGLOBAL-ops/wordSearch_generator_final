@@ -10,7 +10,18 @@ Public Class wordSearch_generator
         Dim rnd As Random = New Random()
         found = New List(Of String)()
         Dim fill As String = "abcdefghijklmnopqrstuvwxyz"
-        puzzle = New String(49, 49) {}
+        
+          Dim row_input as Integer
+          Dim col_input as Integer
+            
+          Console.write("Please enter the desired row size: ")
+          row_input = Console.Readline()
+          
+           Console.write("Please enter the desired column size: ")
+          col_input = Console.Readline()
+        
+        
+        puzzle = New String(row_input - 1, col_input - 1) {}
 
         For r As Integer = 0 To puzzle.GetLength(0) - 1
 
@@ -20,13 +31,13 @@ Public Class wordSearch_generator
         Next
 
         For k As Integer = 0 To theWords.Count - 1
-            Dim row As Integer = rnd.[Next](0, 50)
-            Dim col As Integer = rnd.[Next](0, 50)
+            Dim row As Integer = rnd.[Next](0, row_input)
+            Dim col As Integer = rnd.[Next](0, col_input)
             Dim dir As Integer = rnd.[Next](0, 2)
 
             While row + theWords(k).Length > puzzle.GetLength(0) OrElse col + theWords(k).Length > puzzle.GetLength(1)
-                row = rnd.[Next](0, 50)
-                col = rnd.[Next](0, 50)
+                row = rnd.[Next](0, row_input)
+                col = rnd.[Next](0, col_input)
             End While
 
             If check(dir, row, col, theWords(k)) Then

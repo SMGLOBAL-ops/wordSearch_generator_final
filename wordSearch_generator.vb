@@ -1,3 +1,4 @@
+Imports System.IO
 Imports System
 Imports System.Collections.Generic
 
@@ -87,15 +88,18 @@ Public Class wordSearch_generator
 
         Return True
     End Function
-
+    
+    
     Public Shared Sub Main(ByVal args As String())
-        Dim wordList As List(Of String) = New List(Of String)()
-        wordList.Add("encyclopedia")
-        wordList.Add("Suhail")
-        wordList.Add("deoxyribonucleic")
-        wordList.Add("electromagnetic")
-        wordList.Add("quantum")
-        wordList.Add("visualbasic")
-        Dim theGameW As wordSearch_generator = New wordSearch_generator(wordList)
-    End Sub
-End Class
+            Dim wordList As List(Of String) = New List(Of String)()
+            
+            'System.IO.File.ReadAllText("/uploads/message.txt")
+          For Each line As String In File.ReadLines("/uploads/message.txt")
+                 wordList.Add(line)
+          Next line  
+            
+            
+            Dim theGameW As wordSearch_generator = New wordSearch_generator(wordList)
+        End Sub
+    End Class
+     

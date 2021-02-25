@@ -97,6 +97,6 @@ Public Class wordSearch_generator
         wordList.Add("electromagnetic")
         wordList.Add("quantum")
         wordList.Add("visualbasic")
-        Dim theGameW As wordSearch = New wordSearch(wordList)
+        Dim theGameW As wordSearch_generator = New wordSearch_generator(wordList)
     End Sub
 End Class

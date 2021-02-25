@@ -89,7 +89,6 @@ Public Class wordSearch_generator
     End Function
 
     Public Shared Sub Main(ByVal args As String())
-        Dim rnd As Random = New Random()
         Dim wordList As List(Of String) = New List(Of String)()
         wordList.Add("encyclopedia")
         wordList.Add("Suhail")

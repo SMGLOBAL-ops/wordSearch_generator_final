@@ -9,7 +9,7 @@ Public Class wordSearch_generator
         Dim rnd As Random = New Random()
         found = New List(Of String)()
         Dim fill As String = "abcdefghijklmnopqrstuvwxyz"
-        puzzle = New String(19, 19) {}
+        puzzle = New String(49, 49) {}
 
         For r As Integer = 0 To puzzle.GetLength(0) - 1
 

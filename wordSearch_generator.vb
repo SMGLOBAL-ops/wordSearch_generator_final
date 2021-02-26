@@ -85,7 +85,7 @@ Public Class wordSearch_generator
         Console.WriteLine()
 
         'Prints out the used words in the wordsearch
-        Console.WriteLine("Used words are :")
+        Console.WriteLine("Used words are:  ")
         For Each print As String In found
             Console.WriteLine(print)
         Next

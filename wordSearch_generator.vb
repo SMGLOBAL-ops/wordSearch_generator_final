@@ -30,11 +30,14 @@ Public Class wordSearch_generator
         For r As Integer = 0 To game_grid.GetLength(0) - 1
 
             For c As Integer = 0 To game_grid.GetLength(1) - 1
+            'So to match any series of zero or more characters, use * - look up Regular Expressions ... 
                 game_grid(r, c) = "*"
             Next
         Next
 
         For k As Integer = 0 To theWords.Count - 1
+        
+        ' Here we are using the rnd function to generate random positions for the random letters that fill up the wordsearch rows and columns (see: https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/rnd-function)
             Dim row As Integer = rnd.[Next](0, row_input)
             Dim col As Integer = rnd.[Next](0, col_input)
             Dim dir As Integer = rnd.[Next](0, 2)
@@ -111,7 +114,7 @@ Public Class wordSearch_generator
         Dim wordList As List(Of String) = New List(Of String)()
 
         'File pathway for text file with words you want, where For loop goes through every word line by line as Strings
-        For Each line As String In File.ReadLines("C:\Users\Saif\Desktop\setofwords.txt")
+        For Each line As String In File.ReadLines("/uploads/message.txt")
 
             wordList.Add(line)
         Next line

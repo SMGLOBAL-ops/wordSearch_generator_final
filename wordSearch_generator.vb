@@ -92,6 +92,9 @@ Public Class wordSearch_generator
             Next
         Next
 
+        ' Finally, writes rows and columns with random letters and words that can be fitted within 
+        ' given (row, column) input dimensions to console ... DONE!
+        
         For r As Integer = 0 To game_grid.GetLength(0) - 1
 
             For c As Integer = 0 To game_grid.GetLength(1) - 1

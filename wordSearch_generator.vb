@@ -24,7 +24,8 @@ Public Class wordSearch_generator
         Console.Write("Please enter the desired column size: ")
         col_input = Console.ReadLine()
 
-        'Defining the wordsearch grid, where as indexing starts at 0, we need to -1 from row, column index to give actual length of the grid shown in command prompt
+        'Defining the wordsearch grid as empty 2D string array, where as indexing starts at 0, we need to -1 from row and -1 
+        ' from the column index to give actual length of the wordsearch grid shown in command prompt
         game_grid = New String(row_input - 1, col_input - 1) {}
 
         For r As Integer = 0 To game_grid.GetLength(0) - 1
@@ -37,11 +38,16 @@ Public Class wordSearch_generator
 
         For k As Integer = 0 To theWords.Count - 1
         
-        ' Here we are using the rnd function to generate random positions for the random letters that fill up the wordsearch rows and columns (see: https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/rnd-function)
+        ' Here we are using the rnd function to generate random positions 
+        ' for the random letters that fill up the wordsearch rows and columns 
+        ' (see: https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/rnd-function)
             Dim row As Integer = rnd.[Next](0, row_input)
             Dim col As Integer = rnd.[Next](0, col_input)
             Dim dir As Integer = rnd.[Next](0, 2)
 
+
+        'While loop conditions that iterates through each word from 'theWords' List defined on line 9 and checks the length of the word
+        ' being added to the row does not exceed the input game grid row size (GetLength(0)) or game grid column size (GetLength(1))
             While row + theWords(k).Length > game_grid.GetLength(0) OrElse col + theWords(k).Length > game_grid.GetLength(1)
                 row = rnd.[Next](0, row_input)
                 col = rnd.[Next](0, col_input)
@@ -85,7 +91,7 @@ Public Class wordSearch_generator
         Console.WriteLine()
 
         'Prints out the used words in the wordsearch
-        Console.WriteLine("Used words are:  ")
+        Console.WriteLine("Used words are :")
         For Each print As String In found
             Console.WriteLine(print)
         Next

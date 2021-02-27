@@ -47,6 +47,7 @@ Public Class wordSearch_generator
         ' (see: https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/rnd-function)
             Dim row As Integer = rnd.[Next](0, row_input)
             Dim col As Integer = rnd.[Next](0, col_input)
+            ' 0 -> row, 1 -> column ... 
             Dim dir As Integer = rnd.[Next](0, 2)
 
 
@@ -61,6 +62,7 @@ Public Class wordSearch_generator
             If check(dir, row, col, theWords(k)) Then
                 found.Add(theWords(k))
 
+        ' Word is added to grid
                 For m As Integer = 0 To theWords(k).Length - 1
                     game_grid(row, col) = theWords(k).Substring(m, 1)
 
@@ -72,13 +74,17 @@ Public Class wordSearch_generator
                 Next
             End If
 
+
+        ' With the variable 'spot' below, we are arbitrarily defining an index from the string "fill" (see line 13), 
+        ' that contains the alphabet and filling the random letters in column by column. We do this by checking 
+        ' which cells in the grid are still empty and filling them with random letters. 
             For r As Integer = 0 To game_grid.GetLength(0) - 1
 
                 For c As Integer = 0 To game_grid.GetLength(1) - 1
                 
             
                     If game_grid(r, c).Equals("*") Then
-                    ' With the variable 'spot' below, we have now inputted the words we want in the wordsearch, and 
+                    ' 0, 26 because 26 letters in the English alphabet! 
                         Dim spot As Integer = rnd.[Next](0, 26)
                         game_grid(r, c) = fill.Substring(spot, 1)
                     End If
@@ -103,6 +109,9 @@ Public Class wordSearch_generator
             Console.WriteLine(print)
         Next
     End Sub
+    
+    'Function used in line 61 to verify if input words in text file can be put into the wordsearch, depending 
+    ' on the inputted row and column size at the start ... returns Boolean (true or false)
 
     Public Function check(dir As Integer, row As Integer, col As Integer, word As String) As Boolean
         If dir = 0 Then

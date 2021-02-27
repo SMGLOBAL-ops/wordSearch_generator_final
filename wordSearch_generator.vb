@@ -1,4 +1,4 @@
-Imports System.IO
+=Imports System.IO
 Imports System
 Imports System.Collections.Generic
 
@@ -117,6 +117,7 @@ Public Class wordSearch_generator
 
 
     Public Shared Sub Main(args As String())
+    ' Defining empty List for expected words from file ... 
         Dim wordList As List(Of String) = New List(Of String)()
 
         'File pathway for text file with words you want, where For loop goes through every word line by line as Strings

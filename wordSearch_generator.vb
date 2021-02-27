@@ -1,4 +1,4 @@
-=Imports System.IO
+Imports System.IO
 Imports System
 Imports System.Collections.Generic
 
@@ -39,7 +39,7 @@ Public Class wordSearch_generator
         For k As Integer = 0 To theWords.Count - 1
         
         ' Here we are using the rnd function to generate random positions 
-        ' for the random letters that fill up the wordsearch rows and columns 
+        ' for the random letters that fill up the wordsearch rows and columns and diagonally
         ' (see: https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/rnd-function)
             Dim row As Integer = rnd.[Next](0, row_input)
             Dim col As Integer = rnd.[Next](0, col_input)
@@ -53,6 +53,7 @@ Public Class wordSearch_generator
                 col = rnd.[Next](0, col_input)
             End While
 
+        'If *all* 4 arguments dir, row, col, theWord(k) put into the parameters are satisfied then word is added to 'theWords' list
             If check(dir, row, col, theWords(k)) Then
                 found.Add(theWords(k))
 
@@ -115,7 +116,7 @@ Public Class wordSearch_generator
         Return True
     End Function
 
-
+' Main Sub Main where text file read in and words read to form the wordSearch 
     Public Shared Sub Main(args As String())
     ' Defining empty List for expected words from file ... 
         Dim wordList As List(Of String) = New List(Of String)()

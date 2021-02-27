@@ -31,7 +31,11 @@ Public Class wordSearch_generator
         For r As Integer = 0 To game_grid.GetLength(0) - 1
 
             For c As Integer = 0 To game_grid.GetLength(1) - 1
-            'So to match any series of zero or more characters, use * - look up Regular Expressions ... 
+            'Initialising grid box cells for row and column size you defined to be empty spaces to begin with
+            ' and match each cell of the grid to have "nothing", "*" looks for an expression with zero or more instances
+            ' of "nothing" inside it, so can fill with words and random letters later ... 
+            ' look up Regular Expressions quantifiers ... 
+            ' https://www.tutorialspoint.com/vb.net/vb.net_quantifiers.htm
                 game_grid(r, c) = "*"
             Next
         Next
@@ -71,8 +75,10 @@ Public Class wordSearch_generator
             For r As Integer = 0 To game_grid.GetLength(0) - 1
 
                 For c As Integer = 0 To game_grid.GetLength(1) - 1
-
+                
+            
                     If game_grid(r, c).Equals("*") Then
+                    ' With the variable 'spot' below, we have now inputted the words we want in the wordsearch, and 
                         Dim spot As Integer = rnd.[Next](0, 26)
                         game_grid(r, c) = fill.Substring(spot, 1)
                     End If
@@ -106,7 +112,7 @@ Public Class wordSearch_generator
             Next
         End If
 
-        If dir <> 0 Then
+        If dir <> 0 Then 'If direction IS NOT row 
 
             For c As Integer = col To word.Length - 1
                 If Not game_grid(row, c).Equals("*") Then Return False
